@@ -7,167 +7,167 @@ using namespace std;
 int TEMP;
 char name[25];
 char name2[25];
-HANDLE  hConsole;
+HANDLE  h_console;
 int hitted = 0, hitted2 = 0, missed = 0, missed2 = 0;
 
-void Printf(char player[][10], char enemy[][10], char playerplace[][10], char enemyplace[][10]) {
+void printF(char player[][10], char enemy[][10], char player_place[][10], char enemy_place[][10]) {
 
 	char temp[10][10];
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
 			if (TEMP == 1) temp[i][j] = player[i][j];
 			else if (TEMP == 2) temp[i][j] = enemy[i][j];
-			else if (TEMP == 4) temp[i][j] = playerplace[i][j];
-			else if (TEMP == 5) temp[i][j] = enemyplace[i][j];
+			else if (TEMP == 4) temp[i][j] = player_place[i][j];
+			else if (TEMP == 5) temp[i][j] = enemy_place[i][j];
 		}
 
-	int ROWS = 0, COLS = 0;
+	auto rows = 0, cols = 0;
 	system("CLS");
 	cout << "\n\n    1   2   3   4   5   6   7   8   9   10" << endl;
 	char letter = 65;
-	for (int i = 0; i < 20; i++) {
+	for (auto i = 0; i < 20; i++) {
 		if (i == 0) {
-			cout << "  " << char(218) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(194) << char(196) << char(196) << char(196);
-			cout << char(191) << "\n" << letter << " ";
+			cout << "  " << static_cast<char>(218) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(194) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(191) << "\n" << letter << " ";
 			letter++;
 		}
 
 		if (i % 2 == 0) {
-			COLS = 0;
-			for (int j = 0; j < 10; j++) {
-				cout << char(179) << " ";
-				if (temp[ROWS][COLS] == 'X') {
-					SetConsoleTextAttribute(hConsole, 8);
-					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+			cols = 0;
+			for (auto j = 0; j < 10; j++) {
+				cout << static_cast<char>(179) << " ";
+				if (temp[rows][cols] == 'X') {
+					SetConsoleTextAttribute(h_console, 8);
+					cout << temp[rows][cols] << " ";
+					SetConsoleTextAttribute(h_console, 15);
 				}
-				else if (temp[ROWS][COLS] == 'M') {
-					SetConsoleTextAttribute(hConsole, 9);
-					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+				else if (temp[rows][cols] == 'M') {
+					SetConsoleTextAttribute(h_console, 9);
+					cout << temp[rows][cols] << " ";
+					SetConsoleTextAttribute(h_console, 15);
 				}
-				else if (temp[ROWS][COLS] == 'H') {
-					SetConsoleTextAttribute(hConsole, 4);
-					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+				else if (temp[rows][cols] == 'H') {
+					SetConsoleTextAttribute(h_console, 4);
+					cout << temp[rows][cols] << " ";
+					SetConsoleTextAttribute(h_console, 15);
 				}
-				else cout << temp[ROWS][COLS] << " ";
-				COLS++;
+				else cout << temp[rows][cols] << " ";
+				cols++;
 			}
-			ROWS++;
+			rows++;
 			if (i == 4) {
 				if (TEMP == 2) {
-					cout << char(179) << "                Hitted Ships: ";
-					SetConsoleTextAttribute(hConsole, 4);
+					cout << static_cast<char>(179) << "                Hitted Ships: ";
+					SetConsoleTextAttribute(h_console, 4);
 					cout << hitted;
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 15);
 					cout << "    Missed Ships: ";
-					SetConsoleTextAttribute(hConsole, 9);
+					SetConsoleTextAttribute(h_console, 9);
 					cout << missed << "\n  ";
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 15);
 				}
 				else if (TEMP == 1 || TEMP == 4) {
-					cout << char(179) << "                Hitted Ships: ";
-					SetConsoleTextAttribute(hConsole, 4);
-					cout << hitted;
-					SetConsoleTextAttribute(hConsole, 15);
+					cout << static_cast<char>(179) << "                Hitted Ships: ";
+					SetConsoleTextAttribute(h_console, 4);
+					cout << hitted2;
+					SetConsoleTextAttribute(h_console, 15);
 					cout << "    Missed Ships: ";
-					SetConsoleTextAttribute(hConsole, 9);
-					cout << missed << "\n  ";
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 9);
+					cout << missed2 << "\n  ";
+					SetConsoleTextAttribute(h_console, 15);
 				}
 			}
-			else cout << char(179) << endl << "  ";
+			else cout << static_cast<char>(179) << endl << "  ";
 		}
 
 
 
 		if (i % 2 == 1 && i != 19) {
-			cout << char(195) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(197) << char(196) << char(196) << char(196);
-			cout << char(180) << endl << letter << " ";
+			cout << static_cast<char>(195) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(197) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(180) << endl << letter << " ";
 			letter++;
 		}
 
 		if (i == 19) {
-			cout << char(192) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(193) << char(196) << char(196) << char(196);
-			cout << char(217) << endl << "  ";
+			cout << static_cast<char>(192) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(193) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(217) << endl << "  ";
 		}
 	}
 }
 
-void Printfplace(char playerplace[][10], char enemyplace[][10]) {
+void print_f_place(char player_place[][10], char enemy_place[][10]) {
 
 	char temp[10][10];
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			if (TEMP == 1) temp[i][j] = playerplace[i][j];
-			else if (TEMP == 2) temp[i][j] = enemyplace[i][j];
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			if (TEMP == 1) temp[i][j] = player_place[i][j];
+			else if (TEMP == 2) temp[i][j] = enemy_place[i][j];
 		}
 
-	int ROWS = 0, COLS = 0;
+	auto ROWS = 0, COLS = 0;
 	system("CLS");
 	cout << "\n\n    1   2   3   4   5   6   7   8   9   10" << endl;
 	char letter = 65;
-	for (int i = 0; i < 20; i++) {
+	for (auto i = 0; i < 20; i++) {
 		if (i == 0) {
-			cout << "  " << char(218) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(194) << char(196) << char(196) << char(196);
-			cout << char(191) << "\n" << letter << " ";
+			cout << "  " << static_cast<char>(218) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(194) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(191) << "\n" << letter << " ";
 			letter++;
 		}
 
 		if (i % 2 == 0) {
 			COLS = 0;
-			for (int j = 0; j < 10; j++) {
-				cout << char(179) << " ";
+			for (auto j = 0; j < 10; j++) {
+				cout << static_cast<char>(179) << " ";
 				if (temp[ROWS][COLS] == 'X') {
-					SetConsoleTextAttribute(hConsole, 8);
+					SetConsoleTextAttribute(h_console, 8);
 					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 15);
 				}
 				else if (temp[ROWS][COLS] == 'M') {
-					SetConsoleTextAttribute(hConsole, 9);
+					SetConsoleTextAttribute(h_console, 9);
 					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 15);
 				}
 				else if (temp[ROWS][COLS] == 'H') {
-					SetConsoleTextAttribute(hConsole, 4);
+					SetConsoleTextAttribute(h_console, 4);
 					cout << temp[ROWS][COLS] << " ";
-					SetConsoleTextAttribute(hConsole, 15);
+					SetConsoleTextAttribute(h_console, 15);
 				}
 				else cout << temp[ROWS][COLS] << " ";
 				COLS++;
 			}
 			ROWS++;
-			cout << char(179) << endl << "  ";
+			cout << static_cast<char>(179) << endl << "  ";
 		}
 
 		if (i % 2 == 1 && i != 19) {
-			cout << char(195) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(197) << char(196) << char(196) << char(196);
-			cout << char(180) << endl << letter << " ";
+			cout << static_cast<char>(195) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(197) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(180) << endl << letter << " ";
 			letter++;
 		}
 
 		if (i == 19) {
-			cout << char(192) << char(196) << char(196) << char(196);
-			for (int i = 0; i <= 8; i++) cout << char(193) << char(196) << char(196) << char(196);
-			cout << char(217) << endl << "  ";
+			cout << static_cast<char>(192) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			for (auto i = 0; i <= 8; i++) cout << static_cast<char>(193) << static_cast<char>(196) << static_cast<char>(196) << static_cast<char>(196);
+			cout << static_cast<char>(217) << endl << "  ";
 		}
 	}
 }
 
-int Checkwin(char enemy[][10], char playerplace[][10]) {
-	int count = 0, count2 = 0;
+int check_win(char enemy[][10], char player_place[][10]) {
+	auto count = 0, count2 = 0;
 
 	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++) {
-			if (playerplace[i][j] == 'H') count++;
+			if (player_place[i][j] == 'H') count++;
 			if (enemy[i][j] == 'H') count2++;
 		}
 
@@ -175,30 +175,29 @@ int Checkwin(char enemy[][10], char playerplace[][10]) {
 	else return 0;
 }
 
-void Manually(char playerplace[][10], char enemyplace[][10]) {
+void manually(char player_place[][10], char enemy_place[][10]) {
 
 	char temp[10][10];
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			if (TEMP == 1) temp[i][j] = playerplace[i][j];
-			else if (TEMP == 2) temp[i][j] = enemyplace[i][j];
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			if (TEMP == 1) temp[i][j] = player_place[i][j];
+			else if (TEMP == 2) temp[i][j] = enemy_place[i][j];
 		}
 
-	int ROWS, COLS, tmp, answer;
-	bool check;
+	int rows = 0, COLS, answer;
 	char letter;
-	int ships = 10, size = 4;
+	auto ships = 10, size = 4;
 
 	while (ships) {
-		tmp = ships;
-		check = true;
+		auto tmp = ships;
+		auto check = true;
 		if (ships == 10) size = 4;
 		else if (ships == 9) size = 3;
 		else if (ships == 7) size = 2;
 		else if (ships == 4) size = 1;
 
-		Printfplace(playerplace, enemyplace);
+		print_f_place(player_place, enemy_place);
 		cout << "Ship " << size << "x\n";
 		cout << "  Ship begin: (e.g 5g)\n";
 		cin >> COLS;
@@ -210,73 +209,73 @@ void Manually(char playerplace[][10], char enemyplace[][10]) {
 		}
 		else answer = 2;
 
-		if (int(letter) >= 65 && int(letter) <= 74) ROWS = int(letter) - 65;
-		else if (int(letter) >= 97 && int(letter) <= 106) ROWS = int(letter) - 97;
+		if (static_cast<int>(letter) >= 65 && static_cast<int>(letter) <= 74) rows = static_cast<int>(letter) - 65;
+		else if (static_cast<int>(letter) >= 97 && static_cast<int>(letter) <= 106) rows = static_cast<int>(letter) - 97;
 
 
 		COLS--;
 
-		if (answer == 1 && ROWS <= 10 - size) {
-			for (int i = -1; i <= size; i++) {
-				if (temp[ROWS + i][COLS] == 'X') check = false;
+		if (answer == 1 && rows <= 10 - size) {
+			for (auto i = -1; i <= size; i++) {
+				if (temp[rows + i][COLS] == 'X') check = false;
 			}
 			if (check) {
 				if (COLS == 0) {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS + 1] == 'X') check = false;
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][COLS + 1] == 'X') check = false;
 					}
 				}
 				else if (COLS == 9) {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS - 1] == 'X') check = false;
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][COLS - 1] == 'X') check = false;
 					}
 				}
 				else {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS - 1] == 'X' || temp[ROWS + i][COLS + 1] == 'X') check = false;
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][COLS - 1] == 'X' || temp[rows + i][COLS + 1] == 'X') check = false;
 					}
 				}
 			}
 			if (check) {
-				for (int i = ROWS; i < ROWS + size; i++) temp[i][COLS] = 'X';
+				for (auto i = rows; i < rows + size; i++) temp[i][COLS] = 'X';
 				ships--;
 			}
 		}
 		else if (answer == 2 && COLS <= 10 - size) {
-			for (int i = 0; i < size; i++) {
-				if (temp[ROWS][COLS + i] == 'X') check = false;
+			for (auto i = 0; i < size; i++) {
+				if (temp[rows][COLS + i] == 'X') check = false;
 			}
 			if (check) {
 				if (COLS == 0) {
-					for (int i = 0; i <= size; i++) {
-						if (temp[ROWS + 1][COLS + i] == 'X' || temp[ROWS - 1][COLS + i] == 'X') check = false;
+					for (auto i = 0; i <= size; i++) {
+						if (temp[rows + 1][COLS + i] == 'X' || temp[rows - 1][COLS + i] == 'X') check = false;
 					}
 				}
 				else if (COLS == 10 - size) {
-					for (int i = -1; i < size; i++) {
-						if (temp[ROWS + 1][COLS + i] == 'X' || temp[ROWS - 1][COLS + i] == 'X') check = false;
+					for (auto i = -1; i < size; i++) {
+						if (temp[rows + 1][COLS + i] == 'X' || temp[rows - 1][COLS + i] == 'X') check = false;
 					}
 				}
 				else {
-					for (int i = -1; i <= 1; i++)
-						for (int j = -1; j <= size; j++) {
-							if (temp[ROWS + i][COLS + j] == 'X') check = false;
+					for (auto i = -1; i <= 1; i++)
+						for (auto j = -1; j <= size; j++) {
+							if (temp[rows + i][COLS + j] == 'X') check = false;
 						}
 				}
 			}
 			if (check) {
-				for (int i = COLS; i < COLS + size; i++) temp[ROWS][i] = 'X';
+				for (auto i = COLS; i < COLS + size; i++) temp[rows][i] = 'X';
 				ships--;
 			}
 		}
 
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++) {
-				if (TEMP == 1) playerplace[i][j] = temp[i][j];
-				else if (TEMP == 2) enemyplace[i][j] = temp[i][j];
+		for (auto i = 0; i < 10; i++)
+			for (auto j = 0; j < 10; j++) {
+				if (TEMP == 1) player_place[i][j] = temp[i][j];
+				else if (TEMP == 2) enemy_place[i][j] = temp[i][j];
 			}
 
-		if (tmp != ships) Printfplace(playerplace, enemyplace);
+		if (tmp != ships) print_f_place(player_place, enemy_place);
 		else {
 			cout << "\nInvalid Move!\n";
 			system("pause");
@@ -284,19 +283,18 @@ void Manually(char playerplace[][10], char enemyplace[][10]) {
 	}
 }
 
-void Randomly(char playerplace[][10], char enemyplace[][10]) {
+void randomly(char player_place[][10], char enemy_place[][10]) {
 
 	char temp[10][10];
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			if (TEMP == 1) temp[i][j] = playerplace[i][j];
-			else if (TEMP == 2) temp[i][j] = enemyplace[i][j];
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			if (TEMP == 1) temp[i][j] = player_place[i][j];
+			else if (TEMP == 2) temp[i][j] = enemy_place[i][j];
 		}
 
-	int ROWS, COLS, answer;
-	int ships = 10, size = 4;
-	bool check = true;
+	auto ships = 10, size = 4;
+	auto check = true;
 
 	while (ships) {
 
@@ -306,82 +304,82 @@ void Randomly(char playerplace[][10], char enemyplace[][10]) {
 		else if (ships == 7) size = 2;
 		else if (ships == 4) size = 1;
 
-		answer = rand() % 100;
-		COLS = rand() % 10;
-		ROWS = rand() % 10;
+		auto answer = rand() % 100;
+		const auto cols = rand() % 10;
+		const auto rows = rand() % 10;
 
 		if (size != 1) {
 			if (answer % 2 == 1) answer = 1;
 			else answer = 2;
 		}
 		else answer = 2;
-		if (answer == 1 && ROWS <= 10 - size) {
-			for (int i = -1; i <= size; i++) {
-				if (temp[ROWS + i][COLS] == 'X') check = false;
+		if (answer == 1 && rows <= 10 - size) {
+			for (auto i = -1; i <= size; i++) {
+				if (temp[rows + i][cols] == 'X') check = false;
 			}
 			if (check) {
-				if (COLS == 0) {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS + 1] == 'X') check = false;
+				if (cols == 0) {
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][cols + 1] == 'X') check = false;
 					}
 				}
-				else if (COLS == 9) {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS - 1] == 'X') check = false;
+				else if (cols == 9) {
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][cols - 1] == 'X') check = false;
 					}
 				}
 				else {
-					for (int i = -1; i <= size; i++) {
-						if (temp[ROWS + i][COLS - 1] == 'X' || temp[ROWS + i][COLS + 1] == 'X') check = false;
+					for (auto i = -1; i <= size; i++) {
+						if (temp[rows + i][cols - 1] == 'X' || temp[rows + i][cols + 1] == 'X') check = false;
 					}
 				}
 			}
 			if (check) {
-				for (int i = ROWS; i < ROWS + size; i++) temp[i][COLS] = 'X';
+				for (auto i = rows; i < rows + size; i++) temp[i][cols] = 'X';
 				ships--;
 			}
 		}
-		else if (answer == 2 && COLS <= 10 - size) {
+		else if (answer == 2 && cols <= 10 - size) {
 			if (check) {
-				if (COLS == 0) {
-					for (int i = 0; i <= size; i++) {
-						if (temp[ROWS + 1][COLS + i] == 'X' || temp[ROWS - 1][COLS + i] == 'X' || temp[ROWS][COLS + i] == 'X') check = false;
+				if (cols == 0) {
+					for (auto i = 0; i <= size; i++) {
+						if (temp[rows + 1][cols + i] == 'X' || temp[rows - 1][cols + i] == 'X' || temp[rows][cols + i] == 'X') check = false;
 					}
 				}
-				else if (COLS == 10 - size) {
-					for (int i = -1; i < size; i++) {
-						if (temp[ROWS + 1][COLS + i] == 'X' || temp[ROWS - 1][COLS + i] == 'X' || temp[ROWS][COLS + i] == 'X') check = false;
+				else if (cols == 10 - size) {
+					for (auto i = -1; i < size; i++) {
+						if (temp[rows + 1][cols + i] == 'X' || temp[rows - 1][cols + i] == 'X' || temp[rows][cols + i] == 'X') check = false;
 					}
 				}
 				else {
-					for (int i = -1; i <= 1; i++)
-						for (int j = -1; j <= size; j++) {
-							if (temp[ROWS + i][COLS + j] == 'X') check = false;
+					for (auto i = -1; i <= 1; i++)
+						for (auto j = -1; j <= size; j++) {
+							if (temp[rows + i][cols + j] == 'X') check = false;
 						}
 				}
 			}
 			if (check) {
-				for (int i = COLS; i < COLS + size; i++) temp[ROWS][i] = 'X';
+				for (auto i = cols; i < cols + size; i++) temp[rows][i] = 'X';
 				ships--;
 			}
 		}
 	}
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			if (TEMP == 1) playerplace[i][j] = temp[i][j];
-			else if (TEMP == 2) enemyplace[i][j] = temp[i][j];
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			if (TEMP == 1) player_place[i][j] = temp[i][j];
+			else if (TEMP == 2) enemy_place[i][j] = temp[i][j];
 		}
 }
 
-int Adjust(char playerplace[][10], char enemyplace[][10]) {
+int adjust(char player_place[][10], char enemy_place[][10]) {
 
 	char temp[10][10];
 
 	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++) {
-			if (TEMP == 1) temp[i][j] = playerplace[i][j];
-			else if (TEMP == 2) temp[i][j] = enemyplace[i][j];
+			if (TEMP == 1) temp[i][j] = player_place[i][j];
+			else if (TEMP == 2) temp[i][j] = enemy_place[i][j];
 		}
 
 	system("CLS");
@@ -399,75 +397,77 @@ int Adjust(char playerplace[][10], char enemyplace[][10]) {
 	int answer2;
 	cin >> answer2;
 
-	int count = 0;
+	auto count = 0;
 	if (answer2 == 1) {
 		count = 0;
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++) if (temp[i][j] == 'X') count++;
+		for (auto& i : temp)
+			for (auto j = 0; j < 10; j++) if (i[j] == 'X') count++;
 		if (count > 0) {
 			cout << "\nPlease clean ships..\n";
 			system("pause");
-			Adjust(playerplace, enemyplace);
+			adjust(player_place, enemy_place);
 		}
 		else {
-			Randomly(playerplace, enemyplace);
-			Printfplace(playerplace, enemyplace);
+			randomly(player_place, enemy_place);
+			print_f_place(player_place, enemy_place);
 			system("pause");
-			Adjust(playerplace, enemyplace);
+			adjust(player_place, enemy_place);
 		}
 	}
 	else if (answer2 == 2) {
 		count = 0;
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++) if (temp[i][j] == 'X') count++;
+		for (auto& i : temp)
+			for (auto j = 0; j < 10; j++) if (i[j] == 'X') count++;
 		if (count > 0) {
 			cout << "\nPlease clean ships..\n";
 			system("pause");
-			Adjust(playerplace, enemyplace);
+			adjust(player_place, enemy_place);
 		}
 		else {
-			Manually(playerplace, enemyplace);
+			manually(player_place, enemy_place);
 			system("pause");
-			Adjust(playerplace, enemyplace);
+			adjust(player_place, enemy_place);
 		}
 	}
 	else if (answer2 == 3) {
-		Printfplace(playerplace, enemyplace);
+		print_f_place(player_place, enemy_place);
 		system("pause");
-		Adjust(playerplace, enemyplace);
+		adjust(player_place, enemy_place);
 	}
 	else if (answer2 == 4) {
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++) {
-				if (TEMP == 1) playerplace[i][j] = '.';
-				else enemyplace[i][j] = '.';
+		for (auto i = 0; i < 10; i++)
+			for (auto j = 0; j < 10; j++) {
+				if (TEMP == 1) player_place[i][j] = '.';
+				else enemy_place[i][j] = '.';
 			}
-		Printfplace(playerplace, enemyplace);
+		print_f_place(player_place, enemy_place);
 		system("pause");
-		Adjust(playerplace, enemyplace);
+		adjust(player_place, enemy_place);
 	}
 	else if (answer2 == 5) {
 		count = 0;
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++) if (temp[i][j] == 'X') count++;
+		for (auto& i : temp)
+			for (auto j = 0; j < 10; j++) if (i[j] == 'X') count++;
 
 		if (count > 0) {
-			for (int i = 0; i < 10; i++)
-				for (int j = 0; j < 10; j++) {
-					if (TEMP == 1) playerplace[i][j] = temp[i][j];
-					else if (TEMP == 2) enemyplace[i][j] = temp[i][j];
+			for (auto i = 0; i < 10; i++)
+				for (auto j = 0; j < 10; j++) {
+					if (TEMP == 1) player_place[i][j] = temp[i][j];
+					else if (TEMP == 2) enemy_place[i][j] = temp[i][j];
 				}
 			return 0;
 		}
 		else {
 			cout << "\nPlease set ships..\n";
 			Sleep(2000);
-			Adjust(playerplace, enemyplace);
+			adjust(player_place, enemy_place);
 		}
 	}
+	return 0;
 }
 
-int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], char enemyplace[][10]) {
+auto single_player(char player[][10], char enemy[][10], char player_place[][10], char enemy_place[][10]) -> int
+{
 
 	cin.ignore(), cin.clear(), fseek, fflush;
 	system("CLS");
@@ -479,17 +479,17 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 	ofstream LOGS;
 	LOGS.open("logs.txt");
 
-	int easy = 1, medium = 2, hard = 3;
+	auto easy = 1, medium = 2, hard = 3;
 
 	system("CLS");
-	for (int i = 0; i < 10; i++) cout << "\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 10; i++) cout << "\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "Select the difficulty level:\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "Easy\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "Medium\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "Hard\n";
 
 	int answer;
@@ -499,70 +499,70 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 	else if (answer == 2) answer = medium;
 	else if (answer == 3) answer = hard;
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			playerplace[i][j] = '.';
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			player_place[i][j] = '.';
 			enemy[i][j] = '.';
 		}
 
 	TEMP = 2;
-	Randomly(playerplace, enemyplace);
+	randomly(player_place, enemy_place);
 	TEMP = 1;
-	Adjust(playerplace, enemyplace);
+	adjust(player_place, enemy_place);
 
 
 	int cols, rows = 0;
-	char history = '0';
+	auto history = '0';
 	int ROWS, COLS, control;
-	int count = 0, count2 = 1, memory = 0, tmp = 0, tmp2 = 0, c = 0, rule = 1, l = 3;
+	auto count = 0, count2 = 1, memory = 0, tmp = 0, tmp2 = 0, c = 0, rule = 1, l = 3;
 	char letter;
 	ROWS = rand() % 10, COLS = rand() % 10;
 
 	do {
 		TEMP = 2;
-		control = Checkwin(playerplace, enemy);
+		control = check_win(player_place, enemy);
 		if (rule == 1 && control == 0) {
-			Printf(player, enemy, playerplace, enemyplace);
+			printF(player, enemy, player_place, enemy_place);
 			cout << "\n" << name << ", it's your turn\nEnter the number: v/h (e.g. 4c)\n";
 			cin >> cols;
 			cin >> letter;
 			cols--;
 
 
-			if (int(letter) >= 65 && int(letter) <= 74) rows = int(letter) - 65;
-			else if (int(letter) >= 97 && int(letter) <= 106) rows = int(letter) - 97;
+			if (static_cast<int>(letter) >= 65 && static_cast<int>(letter) <= 74) rows = static_cast<int>(letter) - 65;
+			else if (static_cast<int>(letter) >= 97 && static_cast<int>(letter) <= 106) rows = static_cast<int>(letter) - 97;
 
 			if (enemy[rows][cols] != '.' || rows >= 10 || cols >= 10) {
 				cout << "\nInvalid move..\nPlease wait...";
 				Sleep(3000);
 			}
-			else if (enemyplace[rows][cols] == 'X') {
+			else if (enemy_place[rows][cols] == 'X') {
 				enemy[rows][cols] = 'H';
 				hitted++;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou hit!\nPlease wait...";
 				Sleep(2000);
 			}
 			else {
 				enemy[rows][cols] = 'M';
 				missed++;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou miss..\nPlease wait...";
 				Sleep(3000);
 				rule = 2, TEMP = 4;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				Sleep(3000);
 			}
 		}
 		else {
 			if (answer == easy) {
-				if (playerplace[ROWS][COLS] == '.' || playerplace[ROWS][COLS] == 'X') {
-					if (playerplace[ROWS][COLS] == 'X') {
-						playerplace[ROWS][COLS] = 'H';
+				if (player_place[ROWS][COLS] == '.' || player_place[ROWS][COLS] == 'X') {
+					if (player_place[ROWS][COLS] == 'X') {
+						player_place[ROWS][COLS] = 'H';
 						hitted2++;
 					}
 					else {
-						playerplace[ROWS][COLS] = 'M';
+						player_place[ROWS][COLS] = 'M';
 						missed2++;
 						rule = 1;
 					}
@@ -573,27 +573,27 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 				count = 0;
 				for (int i = 0; i < 10; i++) {
 					for (int j = 0; j < 10; j++) {
-						if (playerplace[i][j] == 'M' || playerplace[ROWS][COLS] == 'H') count++;
+						if (player_place[i][j] == 'M' || player_place[ROWS][COLS] == 'H') count++;
 					}
 				}
 				if (count == count2) {
 					count2++;
 					TEMP = 4;
-					Printf(player, enemy, playerplace, enemyplace);
+					printF(player, enemy, player_place, enemy_place);
 					Sleep(3000);
 				}
 			}
 			else if (answer == medium) {
 				if (history == '0') {
-					if (playerplace[ROWS][COLS] == 'X' || playerplace[ROWS][COLS] == '.') {
-						if (playerplace[ROWS][COLS] == 'X') {
-							playerplace[ROWS][COLS] = 'H';
+					if (player_place[ROWS][COLS] == 'X' || player_place[ROWS][COLS] == '.') {
+						if (player_place[ROWS][COLS] == 'X') {
+							player_place[ROWS][COLS] = 'H';
 							hitted2++;
 							memory = 1;
 							history = 'X';
 						}
 						else {
-							playerplace[ROWS][COLS] = 'M';
+							player_place[ROWS][COLS] = 'M';
 							missed2++;
 							rule = 1;
 						}
@@ -605,15 +605,15 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 				else if (history == 'X') {
 					if (memory == 1) {
 						if (ROWS != 9) {
-							if (playerplace[ROWS + 1][COLS] == 'X' || playerplace[ROWS + 1][COLS] == '.') {
+							if (player_place[ROWS + 1][COLS] == 'X' || player_place[ROWS + 1][COLS] == '.') {
 								ROWS++;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									hitted2++;
 									history = '0';
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									memory = 2, rule = 1;
 									ROWS--;
@@ -625,15 +625,15 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 					}
 					else if (memory == 2) {
 						if (ROWS != 0) {
-							if (playerplace[ROWS - 1][COLS] == 'X' || playerplace[ROWS - 1][COLS] == '.') {
+							if (player_place[ROWS - 1][COLS] == 'X' || player_place[ROWS - 1][COLS] == '.') {
 								ROWS--;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									hitted2++;
 									history = '0';
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									memory = 3, rule = 1;
 									ROWS++;
@@ -645,15 +645,15 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 					}
 					else if (memory == 3) {
 						if (COLS != 9) {
-							if (playerplace[ROWS][COLS + 1] == 'X' || playerplace[ROWS][COLS + 1] == '.') {
+							if (player_place[ROWS][COLS + 1] == 'X' || player_place[ROWS][COLS + 1] == '.') {
 								COLS++;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									hitted2++;
 									history = '0';
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed++;
 									memory = 4, rule = 1;
 									COLS--;
@@ -667,13 +667,13 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 						if (COLS != 0) {
 							if (player[ROWS][COLS - 1] == 'X' || player[ROWS][COLS - 1] == '.') {
 								COLS--;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									hitted2++;
 									history = '0';
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									memory = 0, rule = 1;
 									history = ' ';
@@ -696,14 +696,14 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 				}
 
 				count = 0;
-				for (int i = 0; i < 10; i++)
-					for (int j = 0; j < 10; j++)
-						if (playerplace[i][j] == 'M' || playerplace[i][j] == 'H') count++;
+				for (auto i = 0; i < 10; i++)
+					for (auto j = 0; j < 10; j++)
+						if (player_place[i][j] == 'M' || player_place[i][j] == 'H') count++;
 
 				if (count == count2) {
 					TEMP = 4;
 					count2++;
-					Printf(player, enemy, playerplace, enemyplace);
+					printF(player, enemy, player_place, enemy_place);
 					Sleep(3000);
 				}
 
@@ -712,23 +712,23 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 				if (c == 5 && history != 'X') {
 					do {
 						ROWS = rand() % 10, COLS = rand() % 10;
-					} while (playerplace[ROWS][COLS] != 'X');
+					} while (player_place[ROWS][COLS] != 'X');
 				}
 
 				if (history == '0') {
-					if (COLS != 9 && COLS != 0 && playerplace[ROWS + 1][COLS] != 'H' && playerplace[ROWS + 1][COLS + 1] != 'H' &&
-						playerplace[ROWS + 1][COLS - 1] != 'H' && playerplace[ROWS - 1][COLS] != 'H' && playerplace[ROWS - 1][COLS + 1] != 'H' &&
-						playerplace[ROWS - 1][COLS - 1] != 'H' && playerplace[ROWS][COLS + 1] != 'H' && playerplace[ROWS][COLS - 1] != 'H') {
-						if (playerplace[ROWS][COLS] == 'X' || playerplace[ROWS][COLS] == '.') {
-							if (playerplace[ROWS][COLS] == 'X') {
-								playerplace[ROWS][COLS] = 'H';
+					if (COLS != 9 && COLS != 0 && player_place[ROWS + 1][COLS] != 'H' && player_place[ROWS + 1][COLS + 1] != 'H' &&
+						player_place[ROWS + 1][COLS - 1] != 'H' && player_place[ROWS - 1][COLS] != 'H' && player_place[ROWS - 1][COLS + 1] != 'H' &&
+						player_place[ROWS - 1][COLS - 1] != 'H' && player_place[ROWS][COLS + 1] != 'H' && player_place[ROWS][COLS - 1] != 'H') {
+						if (player_place[ROWS][COLS] == 'X' || player_place[ROWS][COLS] == '.') {
+							if (player_place[ROWS][COLS] == 'X') {
+								player_place[ROWS][COLS] = 'H';
 								hitted2++;
 								history = 'X';
 								memory = 1;
 								c = 0;
 							}
 							else {
-								playerplace[ROWS][COLS] = 'M';
+								player_place[ROWS][COLS] = 'M';
 								missed2++, c++;
 								rule = 1;
 							}
@@ -738,18 +738,18 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 						}
 					}
 
-					else if (COLS == 9 && playerplace[ROWS + 1][COLS] != 'H' && playerplace[ROWS + 1][COLS - 1] != 'H' &&
-						playerplace[ROWS - 1][COLS] != 'H' && playerplace[ROWS - 1][COLS - 1] != 'H' && playerplace[ROWS][COLS - 1] != 'H') {
-						if (playerplace[ROWS][COLS] == 'X' || playerplace[ROWS][COLS] == '.') {
-							if (playerplace[ROWS][COLS] == 'X') {
-								playerplace[ROWS][COLS] = 'H';
+					else if (COLS == 9 && player_place[ROWS + 1][COLS] != 'H' && player_place[ROWS + 1][COLS - 1] != 'H' &&
+						player_place[ROWS - 1][COLS] != 'H' && player_place[ROWS - 1][COLS - 1] != 'H' && player_place[ROWS][COLS - 1] != 'H') {
+						if (player_place[ROWS][COLS] == 'X' || player_place[ROWS][COLS] == '.') {
+							if (player_place[ROWS][COLS] == 'X') {
+								player_place[ROWS][COLS] = 'H';
 								hitted2++;
 								history = 'X';
 								memory = 1;
 								c = 0;
 							}
 							else {
-								playerplace[ROWS][COLS] = 'M';
+								player_place[ROWS][COLS] = 'M';
 								missed2++, c++;
 								rule = 1;
 							}
@@ -759,18 +759,18 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 						}
 					}
 
-					else if (COLS == 0 && playerplace[ROWS + 1][COLS] != 'H' && playerplace[ROWS + 1][COLS + 1] != 'H' &&
-						playerplace[ROWS - 1][COLS] != 'H' && playerplace[ROWS - 1][COLS + 1] != 'H' && playerplace[ROWS][COLS + 1] != 'H') {
-						if (playerplace[ROWS][COLS] == 'X' || playerplace[ROWS][COLS] == '.') {
-							if (playerplace[ROWS][COLS] == 'X') {
-								playerplace[ROWS][COLS] = 'H';
+					else if (COLS == 0 && player_place[ROWS + 1][COLS] != 'H' && player_place[ROWS + 1][COLS + 1] != 'H' &&
+						player_place[ROWS - 1][COLS] != 'H' && player_place[ROWS - 1][COLS + 1] != 'H' && player_place[ROWS][COLS + 1] != 'H') {
+						if (player_place[ROWS][COLS] == 'X' || player_place[ROWS][COLS] == '.') {
+							if (player_place[ROWS][COLS] == 'X') {
+								player_place[ROWS][COLS] = 'H';
 								hitted2++;
 								history = 'X';
 								memory = 1;
 								c = 0;
 							}
 							else {
-								playerplace[ROWS][COLS] = 'M';
+								player_place[ROWS][COLS] = 'M';
 								missed2++, c++;
 								rule = 1;
 							}
@@ -790,14 +790,14 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 
 					if (memory == 1) {
 						if (ROWS != 9) {
-							if (playerplace[ROWS + 1][COLS] == 'X' || playerplace[ROWS + 1][COLS] == '.') {
+							if (player_place[ROWS + 1][COLS] == 'X' || player_place[ROWS + 1][COLS] == '.') {
 								ROWS++;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									tmp++, hitted2++;
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									memory = 2, rule = 1;
 									ROWS -= (tmp + 1);
@@ -815,14 +815,14 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 					}
 
 					else if (memory == 2) {
-						if (playerplace[ROWS - 1][COLS] == 'X' || playerplace[ROWS - 1][COLS] == '.') {
+						if (player_place[ROWS - 1][COLS] == 'X' || player_place[ROWS - 1][COLS] == '.') {
 							ROWS--;
-							if (playerplace[ROWS][COLS] == 'X') {
-								playerplace[ROWS][COLS] = 'H';
+							if (player_place[ROWS][COLS] == 'X') {
+								player_place[ROWS][COLS] = 'H';
 								tmp++, hitted2++;
 							}
 							else {
-								playerplace[ROWS][COLS] = 'M';
+								player_place[ROWS][COLS] = 'M';
 								missed2++;
 								rule = 1;
 								if (tmp == 0) {
@@ -836,14 +836,14 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 					}
 					else if (memory == 3 && tmp == 0) {
 						if (COLS != 9) {
-							if (playerplace[ROWS][COLS + 1] == 'X' || playerplace[ROWS][COLS + 1] == '.') {
+							if (player_place[ROWS][COLS + 1] == 'X' || player_place[ROWS][COLS + 1] == '.') {
 								COLS++;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									tmp2++, hitted2++;
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									rule = 1, memory = 4;
 									COLS -= (tmp2 + 1);
@@ -861,14 +861,14 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 					}
 					else if (memory == 4 && tmp == 0) {
 						if (COLS != 0) {
-							if (playerplace[ROWS][COLS - 1] == 'X' || playerplace[ROWS][COLS - 1] == '.') {
+							if (player_place[ROWS][COLS - 1] == 'X' || player_place[ROWS][COLS - 1] == '.') {
 								COLS--;
-								if (playerplace[ROWS][COLS] == 'X') {
-									playerplace[ROWS][COLS] = 'H';
+								if (player_place[ROWS][COLS] == 'X') {
+									player_place[ROWS][COLS] = 'H';
 									tmp2++, hitted2++;
 								}
 								else {
-									playerplace[ROWS][COLS] = 'M';
+									player_place[ROWS][COLS] = 'M';
 									missed2++;
 									rule = 1, memory = 0;
 									tmp = 0, tmp2 = 0;
@@ -897,18 +897,18 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 				}
 
 				count = 0;
-				for (int i = 0; i < 10; i++)
-					for (int j = 0; j < 10; j++) if (playerplace[i][j] == 'M' || playerplace[i][j] == 'H') count++;
+				for (auto i = 0; i < 10; i++)
+					for (auto j = 0; j < 10; j++) if (player_place[i][j] == 'M' || player_place[i][j] == 'H') count++;
 
 				if (count == count2) {
 					TEMP = 4;
 					count2++;
-					Printf(player, enemy, playerplace, enemyplace);
+					printF(player, enemy, player_place, enemy_place);
 					Sleep(3000);
 				}
 			}
 		}
-		control = Checkwin(playerplace, enemy);
+		control = check_win(player_place, enemy);
 	} while (control == 0);
 
 	LOGS << "PLAYER: " << name;
@@ -933,57 +933,57 @@ int Singleplayer(char player[][10], char enemy[][10], char playerplace[][10], ch
 	return 0;
 }
 
-int Multiplayer(char player[][10], char enemy[][10], char playerplace[][10], char enemyplace[][10]) {
+int multi_player(char player[][10], char enemy[][10], char player_place[][10], char enemy_place[][10]) {
 
 	int control;
 	system("CLS");
 	cin.ignore(), cin.clear(), fseek, fflush;
-	for (int i = 0; i < 10; i++) cout << "\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 10; i++) cout << "\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "(Player 1) Name: ";
 	cin.getline(name, 25);
 	system("CLS");
-	for (int i = 0; i < 10; i++) cout << "\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 10; i++) cout << "\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "(Player 2) Name: ";
 	cin.clear(), fseek, fflush;
 	cin.getline(name2, 25);
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
 			enemy[i][j] = '.';
 			player[i][j] = '.';
 		}
 
 	TEMP = 1;
-	Adjust(playerplace, enemyplace);
+	adjust(player_place, enemy_place);
 	TEMP = 2;
-	Adjust(playerplace, enemyplace);
+	adjust(player_place, enemy_place);
 	int COLS, ROWS = 0;
 	char letter;
-	int rule = 1;
+	auto rule = 1;
 	ofstream LOGS;
 	LOGS.open("logs.txt");
 
 	do {
-		control = Checkwin(playerplace, enemy);
+		control = check_win(player_place, enemy);
 		if (rule == 1 && control == 0) {
 			TEMP = 2;
-			Printf(player, enemy, playerplace, enemyplace);
+			printF(player, enemy, player_place, enemy_place);
 			cout << "\n" << name << ", it's your turn\nEnter the number: v/h (e.g. 4c)\n";
 			cin >> COLS;
 			cin >> letter;
 			COLS--;
-			if (int(letter) >= 65 && int(letter) <= 74) ROWS = int(letter) - 65;
-			else if (int(letter) >= 97 && int(letter) <= 106) ROWS = int(letter) - 97;
+			if (static_cast<int>(letter) >= 65 && static_cast<int>(letter) <= 74) ROWS = static_cast<int>(letter) - 65;
+			else if (static_cast<int>(letter) >= 97 && static_cast<int>(letter) <= 106) ROWS = static_cast<int>(letter) - 97;
 			if (enemy[ROWS][COLS] == 'M' || enemy[ROWS][COLS] == 'H' || ROWS >= 10 || COLS >= 10) {
 				cout << "\nInvalid move..\n";
 				Sleep(3000);
 			}
-			else if (enemyplace[ROWS][COLS] == 'X') {
+			else if (enemy_place[ROWS][COLS] == 'X') {
 				enemy[ROWS][COLS] = 'H';
 				hitted++;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou Hit..\n";
 				Sleep(3000);
 			}
@@ -991,28 +991,28 @@ int Multiplayer(char player[][10], char enemy[][10], char playerplace[][10], cha
 				enemy[ROWS][COLS] = 'M';
 				missed++;
 				rule = 2;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou miss..\n";
 				Sleep(3000);
 			}
 		}
 		else {
 			TEMP = 1;
-			Printf(player, enemy, playerplace, enemyplace);
+			printF(player, enemy, player_place, enemy_place);
 			cout << "\n" << name2 << ", it's your turn\nEnter the number: v/h (e.g. 4c)\n";
 			cin >> COLS;
 			cin >> letter;
 			COLS--;
-			if (int(letter) >= 65 && int(letter) <= 74) ROWS = int(letter) - 65;
-			else if (int(letter) >= 97 && int(letter) <= 106) ROWS = int(letter) - 97;
+			if (static_cast<int>(letter) >= 65 && static_cast<int>(letter) <= 74) ROWS = static_cast<int>(letter) - 65;
+			else if (static_cast<int>(letter) >= 97 && static_cast<int>(letter) <= 106) ROWS = static_cast<int>(letter) - 97;
 			if (player[ROWS][COLS] == 'M' || player[ROWS][COLS] == 'H' || ROWS >= 10 || COLS >= 10) {
 				cout << "\nInvalid move..\n";
 				Sleep(3000);
 			}
-			else if (playerplace[ROWS][COLS] == 'X') {
+			else if (player_place[ROWS][COLS] == 'X') {
 				player[ROWS][COLS] = 'H';
 				hitted2++;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou hit..\n";
 				Sleep(3000);
 			}
@@ -1020,12 +1020,12 @@ int Multiplayer(char player[][10], char enemy[][10], char playerplace[][10], cha
 				player[ROWS][COLS] = 'M';
 				missed2++;
 				rule = 1;
-				Printf(player, enemy, playerplace, enemyplace);
+				printF(player, enemy, player_place, enemy_place);
 				cout << "\nYou miss..\n";
 				Sleep(3000);
 			}
 		}
-		control = Checkwin(playerplace, enemy);
+		control = check_win(player_place, enemy);
 	} while (control == 0);
 
 	LOGS << "PLAYER1: " << name;
@@ -1052,41 +1052,41 @@ int Multiplayer(char player[][10], char enemy[][10], char playerplace[][10], cha
 
 int main() {
 
-	srand(time(NULL));
+	srand(time(nullptr));
 
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	h_console = GetStdHandle(STD_OUTPUT_HANDLE);
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
 
-	char player[10][10], enemy[10][10], playerplace[10][10], enemyplace[10][10];
+	char player[10][10], enemy[10][10], player_place[10][10], enemy_place[10][10];
 	char str[20] = "Battleship..";
 
-	for (int i = 0; i < 10; i++) cout << "\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
-	for (int i = 0; str[i] != '\0'; i++) {
+	for (auto i = 0; i < 10; i++) cout << "\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; str[i] != '\0'; i++) {
 		cout << str[i];
 		Sleep(100);
 	}
 	Sleep(1000);
 
-	for (int i = 0; i < 10; i++)
-		for (int j = 0; j < 10; j++) {
-			playerplace[i][j] = '.';
-			enemyplace[i][j] = '.';
+	for (auto i = 0; i < 10; i++)
+		for (auto j = 0; j < 10; j++) {
+			player_place[i][j] = '.';
+			enemy_place[i][j] = '.';
 		}
 
 	system("CLS");
-	for (int i = 0; i < 10; i++) cout << "\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
-	cout << "Singleplayer\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
-	cout << "Multiplayer\n";
-	for (int i = 0; i < 25; i++) cout << "  ";
+	for (auto i = 0; i < 10; i++) cout << "\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
+	cout << "Single player\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
+	cout << "Multi player\n";
+	for (auto i = 0; i < 25; i++) cout << "  ";
 	cout << "Quit game\n";
 
 	int answer;
 	cin >> answer;
-	if (answer == 1) Singleplayer(player, enemy, playerplace, enemyplace);
-	else if (answer == 2) Multiplayer(player, enemy, playerplace, enemyplace);
+	if (answer == 1) single_player(player, enemy, player_place, enemy_place);
+	else if (answer == 2) multi_player(player, enemy, player_place, enemy_place);
 	else if (answer == 3) return 0;
 	else cin >> answer;
 
