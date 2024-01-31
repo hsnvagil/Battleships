@@ -1,7 +1,0 @@
-﻿  Battleships.cpp
-C:\Users\ACER\source\repos\Battleships\Battleships\Battleships.cpp(472,34): warning C4550: expression evaluates to a function which is missing an argument list
-C:\Users\ACER\source\repos\Battleships\Battleships\Battleships.cpp(940,34): warning C4550: expression evaluates to a function which is missing an argument list
-C:\Users\ACER\source\repos\Battleships\Battleships\Battleships.cpp(949,20): warning C4550: expression evaluates to a function which is missing an argument list
-C:\Users\ACER\source\repos\Battleships\Battleships\Battleships.cpp(1055,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\ACER\source\repos\Battleships\Battleships\Battleships.cpp(468): warning C4715: 'Adjust': not all control paths return a value
-  Battleships.vcxproj -> C:\Users\ACER\source\repos\Battleships\Debug\Battleships.exe
